@@ -1,0 +1,10 @@
+:~
+  title+'Hut'
+  info+'A simple chat app.'
+  color+0x7c.afc2
+  version+[0 1 0]
+  website+'https://urbit.org'
+  license+'MIT'
+  base+'hut'
+  glob-ames+[~hanwep-pitwes-fallut-togtun--tipper-navmur-matpub-wanzod 0v0]
+==
