@@ -31,6 +31,7 @@ class App extends Component {
     window.urbit.onRetry = () => this.setState({conn: "try"});
     window.urbit.onError = () => this.setState({conn: "err"});
     this.bottom = React.createRef();
+    this.otherBottom = React.createRef();
   };
 
   componentDidMount() {
@@ -38,7 +39,10 @@ class App extends Component {
     this.getTitles();
   };
 
-  scrollToBottom = () => this.bottom.current.scrollIntoView();
+  scrollToBottom = () => {
+    this.bottom.current.scrollIntoView();
+    this.otherBottom.current.scrollIntoView();
+  }
 
   gidToStr = gid => gid.host + "/" + gid.name;
   hutToStr = hut => {
@@ -331,7 +335,7 @@ class App extends Component {
             <Messages
               currentHut={this.state.currentHut}
               msgJar={this.state.msgJar}
-              bottom={this.bottom}
+              bottom={this.otherBottom}
               patpShorten={this.patpShorten}
               filterUser={other}
             />
