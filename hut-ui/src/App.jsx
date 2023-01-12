@@ -239,8 +239,9 @@ class App extends Component {
     });
   };
 
-  postMsg = () => {
+  postMsg = (ephemeral) => {
     const { msg, currentHut } = this.state;
+    console.log("sending message" + ephemeral + msg);
     const trimmed = msg.trim();
     if (trimmed !== "" && currentHut !== null) {
       const [host, gidName, hutName] = currentHut.split("/");
@@ -251,11 +252,13 @@ class App extends Component {
               "gid": {"host": host, "name": gidName},
               "name": hutName
             },
-            "msg": {"who": this.our, "what": trimmed, "ephemeral" : "no"}
+            "msg": {"who": this.our, "what": trimmed, "ephemeral" : ephemeral}
           }
         }
       );
-      this.setState({msg: ""})
+      if (ephemeral === "false") {
+        this.setState({msg: ""})
+      }
     }
   };
 

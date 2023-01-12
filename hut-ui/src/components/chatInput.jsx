@@ -5,7 +5,18 @@ class ChatInput extends Component {
   handleKey = (e) =>
   (e.key === "Enter") &&
     !e.shiftKey &&
-    this.props.postMsg();
+    this.props.postMsg("false"); // enter is for non-ephemeral messages
+
+  sendEphemeral = () => this.props.postMsg("true");
+
+  componentDidMount() {
+    // send ephemeral every 500ms
+    this.interval = setInterval(this.sendEphemeral, 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     const {our, msg, currentHut} = this.props;
