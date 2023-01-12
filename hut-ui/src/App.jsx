@@ -26,6 +26,7 @@ class App extends Component {
       viewSelect: "def",
       make: "",
       msg: "",
+      prevPost: "",
     };
     window.urbit.onOpen = () => this.setState({conn: "ok"});
     window.urbit.onRetry = () => this.setState({conn: "try"});
@@ -240,11 +241,14 @@ class App extends Component {
   };
 
   postMsg = (ephemeral) => {
-    const { msg, currentHut } = this.state;
+    const { msg, prevPost, currentHut } = this.state;
     console.log("sending message" + ephemeral + msg);
-    const trimmed = msg.trim();
-    if (trimmed !== "" && currentHut !== null) {
+    // a space is significant for holding a line,
+    // showing that the previous ephemeral has been committed
+    const message = msg.trim() === "" ? " " : msg;
+    if (currentHut !== null && (ephemeral === "false" || message !== prevPost)) {
       const [host, gidName, hutName] = currentHut.split("/");
+      console.log("actually poking");
       this.doPoke(
         {
           "post": {
@@ -252,13 +256,14 @@ class App extends Component {
               "gid": {"host": host, "name": gidName},
               "name": hutName
             },
-            "msg": {"who": this.our, "what": trimmed, "ephemeral" : ephemeral}
+            "msg": {"who": this.our, "what": message, "ephemeral" : ephemeral}
           }
         }
       );
       if (ephemeral === "false") {
         this.setState({msg: ""})
       }
+      this.setState({prevPost: message})
     }
   };
 
