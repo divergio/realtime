@@ -74,7 +74,7 @@
     ++  en-msg
       |=  =msg
       ^-  ^json
-      (pairs ~[['who' s+(scot %p who.msg)] ['what' s+what.msg]])
+      (pairs ~[['who' s+(scot %p who.msg)] ['what' s+what.msg] ['ephemeral' s+ephemeral.msg]])
     ++  en-hut
       |=  =hut
       ^-  ^json

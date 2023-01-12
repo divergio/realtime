@@ -6,8 +6,9 @@
 :: an individual chat message will be a pair
 :: of the author and the message itself as
 :: a string
+:: ephemeral is whether or not this is the currently-being-typed line
 ::
-+$  msg      [who=@p what=@t]
++$  msg      [who=@p what=@t ephemeral=@t]
 :: an individual hut will contain an ordered
 :: list of such messages
 ::

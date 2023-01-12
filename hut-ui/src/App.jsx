@@ -247,7 +247,7 @@ class App extends Component {
               "gid": {"host": host, "name": gidName},
               "name": hutName
             },
-            "msg": {"who": this.our, "what": trimmed}
+            "msg": {"who": this.our, "what": trimmed, "ephemeral" : "no"}
           }
         }
       );

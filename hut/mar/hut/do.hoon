@@ -57,7 +57,7 @@
     ==
     :: this decodes a $msg from JSON
     ::
-    ++  de-msg  (ot ~[who+(se %p) what+so])
+    ++  de-msg  (ot ~[who+(se %p) what+so ephemeral+so])
     :: decode a $hut from JSON
     ::
     ++  de-hut  (ot ~[gid+de-gid name+(se %tas)])
