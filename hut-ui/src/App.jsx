@@ -292,6 +292,14 @@ class App extends Component {
   };
 
   render() {
+    const {joined, currentGid} = this.state;
+    const ppl = (currentGid === null)
+          ? []
+          : (joined.has(currentGid))
+          ? [...joined.get(currentGid)]
+          : [];
+    // Currently just supports two people, find the first person who isn't you
+    const other = ppl.find(person => person !== this.our)
     return (
       <React.Fragment>
         <ConnStatus conn={this.state.conn}/>
@@ -325,6 +333,14 @@ class App extends Component {
               msgJar={this.state.msgJar}
               bottom={this.bottom}
               patpShorten={this.patpShorten}
+              filterUser={other}
+            />
+            <Messages
+              currentHut={this.state.currentHut}
+              msgJar={this.state.msgJar}
+              bottom={this.bottom}
+              patpShorten={this.patpShorten}
+              filterUser={this.our}
             />
             <ChatInput
               our={this.our}
