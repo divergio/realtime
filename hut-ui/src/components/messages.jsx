@@ -5,12 +5,15 @@ class Messages extends Component {
   render() {
     const { msgJar, bottom, patpShorten, currentHut, filterUser } = this.props;
     const msgs = msgJar.has(currentHut) ? msgJar.get(currentHut) : [];
-    const msgsFiltered = msgs.filter(msg => msg.who === filterUser);
+    const msgsFromUser= msgs.filter(msg => msg.who === filterUser);
+    const lastEphemeral = msgsFromUser.findLast(msg => msg.ephemeral === "true");
+    const msgsNonEphemeral = msgsFromUser.filter(msg => msg.ephemeral !== "true");
+    const msgsDisplay = lastEphemeral != null ? msgsNonEphemeral.concat([lastEphemeral]) : msgsNonEphemeral;
     return (
       <div className="msgs">
         <div className="fix"/>
         {
-          msgsFiltered.map((msg, ind) =>
+          msgsDisplay.map((msg, ind) =>
             <p className="msg" key={ind}>
               <span className="who">
                 {patpShorten(msg.who) + '>'}
