@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
           // ...svgr options (https://react-svgr.com/docs/options/)
         },
       }),
-      urbitPlugin({ base: "hut", target: SHIP_URL, secure: false }),
+      urbitPlugin({ base: "realtime", target: SHIP_URL, secure: false }),
       reactRefresh(),
     ],
   };
