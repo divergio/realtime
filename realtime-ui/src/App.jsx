@@ -353,8 +353,8 @@ class App extends Component {
               currentHut={this.state.currentHut}
               msgJar={this.state.msgJar}
               bottom={this.otherBottom}
-              patpShorten={this.patpShorten}
               filterUser={other}
+              showEphemeral={true}
             />
             {other != null && currentHut && 
               <div className="msg-title">{this.chatLabel(this.our)}</div>}
@@ -362,8 +362,8 @@ class App extends Component {
               currentHut={this.state.currentHut}
               msgJar={this.state.msgJar}
               bottom={this.bottom}
-              patpShorten={this.patpShorten}
               filterUser={this.our}
+              showEphemeral={false}
             />
             <ChatInput
               our={this.our}
