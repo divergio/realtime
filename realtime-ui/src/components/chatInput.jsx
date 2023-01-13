@@ -28,6 +28,7 @@ class ChatInput extends Component {
             value={msg}
             onChange={e => this.props.setMsg(e.target.value)}
             onKeyUp={this.handleKey}
+            placeholder="Typing here is immediately visible to your chat partner"
           >
           </textarea>
         </div>
