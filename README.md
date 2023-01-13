@@ -6,6 +6,8 @@ Realtime is a top-and-bottom realtime text chat app built on Urbit. It lets you 
 
 This is v0.2.0 of Realtime, which is based on a fork of the Urbit encrypted chat tutorial app [Hut](https://github.com/urbit/docs-examples/tree/main/chat-app) from `~tinnus-napbus`. 
 
+https://user-images.githubusercontent.com/359631/212360920-0ef97803-4c7b-4be7-b092-8b49d26424b3.mov
+
 ## Context
 
 Most of what people think of as chat is in the SMS style: one-by-one messages from each user in the chat. Some chat software adds things like "read indicators," user status bubbles, and *typing* indicators, but for the most part the experience is asynchronous. 
