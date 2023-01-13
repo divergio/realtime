@@ -24,6 +24,7 @@ Which brings me to Urbit: Urbit is an ideal place to create a best-in-class RTT 
 
 TODO: some screenshots and links here
 
+TODO: link to project slides 
 [Project Slides Deck]()
 
 ## Installation (users)
@@ -54,7 +55,7 @@ To chat with your friend, both users must first install Squad and Realtime, then
 
 1. Use the Squad interface to create a squad. Be sure to give the squad a name, as it seems to cause problems in the interface if it doesn't have one. 
 2. The second person should join the Squad. 
-3. Launch Realtime, and select the created Squad from the left drop down. 
+3. Launch Realtime, and select the created Squad from the left drop down (you might need to join from the right drop down first). 
 4. Create a new chat by typing a name for the chat on the left "Chats" section.
 5. Click into the chat.
 6. The second user should launch realtime, select the Squad, and click into the chat as well.
@@ -90,7 +91,7 @@ Ultimately, jitter and latency in the network (which I suspect may be even worse
 
 So how would we achieve fluid real time text that preserves the emotions of the original typer over an unstable network? Fortunately, someone has already solved it with a brilliant but elegant solution: Mark Rejhon's (XEP-0301: In-Band Real Time Text)[https://xmpp.org/extensions/xep-0301.html].
 
-Briefly, what that specification describes is a technique for encoding the original intervals between key presses, transmitting them, and then reproducing them at the destination. It treats the text more like a video, using time stamps for each insertion and deletion, and sends a record of those key presses at regular intervals. The result is text appearing on screen that reproduces the look-and-feel of the typing of the sender, no matter the condition of the network separating the users. 
+Briefly, what that specification describes is a technique for encoding the original time between key presses, transmitting them, and then reproducing them at the destination. It treats the text more like a video, using time stamps for each insertion and deletion, and sends a record of those key presses at regular intervals. The result is text appearing on screen that reproduces the look-and-feel of the typing of the sender, no matter the condition of the network separating the users. 
 
 I believe it is relatively straightforward to adapt the techniques in XEP-0301 for use in a Urbit chat app. 
 
