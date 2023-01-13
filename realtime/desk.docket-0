@@ -1,10 +1,10 @@
 :~
   title+'Realtime'
   info+'A simple realtime chat app.'
-  color+0x7c.afc2
+  color+0x29.86cc
   version+[0 2 0]
-  website+'https://urbit.org'
+  website+'https://github.com/divergio/realtime'
   license+'MIT'
   base+'realtime'
-  glob-ames+[~sovdev-sidbyt-hasmur-rillyx--havlur-salnyl-fanbel-marzod 0v0]
+  glob-ames+[~novrul-falfen 0v0]
 ==
