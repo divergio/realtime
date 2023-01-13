@@ -11,7 +11,7 @@ class ChatInput extends Component {
 
   componentDidMount() {
     // send ephemeral every 500ms
-    this.interval = setInterval(this.sendEphemeral, 500);
+    this.interval = setInterval(this.sendEphemeral, 350);
   }
 
   componentWillUnmount() {
