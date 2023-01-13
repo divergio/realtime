@@ -12,7 +12,7 @@ class Messages extends Component {
     if (showEphemeral && lastEphemeral != null) {
       const lastMessage = msgsNonEphemeral[msgsNonEphemeral.length - 1];
       // This prevents ghosting of the last ephemeral message
-      if (lastEphemeral.what !== lastMessage.what) {
+      if (lastMessage != null && lastEphemeral.what !== lastMessage.what) {
         msgsDisplay = msgsNonEphemeral.concat([lastEphemeral]);
       }
     }
