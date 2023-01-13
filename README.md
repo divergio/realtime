@@ -10,22 +10,17 @@ This is v0.2.0 of Realtime, which is based on a fork of the Urbit encrypted chat
 
 Most of what people think of as chat is in the SMS style: one-by-one messages from each user in the chat. Some chat software adds things like "read indicators," user status bubbles, and *typing* indicators, but for the most part the experience is asynchronous. 
 
-Real time chat (or realtime text, RTT), in contrast, lets you watch as someone composes a message. The result is an experience more like a conversation, with a more dynamic feel where the other person can interject or respond as the first person is composing their message. 
+Real time chat (or realtime text, RTT), in contrast, lets you watch as someone composes a message. The result is an experience more like a conversation, with a more dynamic feel where the other person can interject or respond as the first person is composing their message. It's a fast and interactive way of conversing. 
 
-It's a fast and interactive way of conversing. 
-
+## History
 In the early internet, real time chat was more common. It was the main chat type in the popular chat app [ICQ](https://en.wikipedia.org/wiki/ICQ), and its lineage even traces back to early [Unix utilities](https://en.wikipedia.org/wiki/Talk_(software).
 
 I've long had an affinity and nostalgia for this older form of chat, but it has fallen by the wayside as the SMS-style apps gained dominance. The form struggles on mobile, where slow typing speed frustrates communication. It's more suitable for desktop use, where typing speed and screen space are not limited. 
 
 There have been attempts to make RTT-style apps for mobile devices: [Honk](https://honk.me) is one of the best recent implementations. However, like many traditional web2 apps, it [struggled](https://honk.me/sunset) to find a sustainable business model to support server costs and ongoing development. 
 
+## Why Urbit? 
 Which brings me to Urbit: Urbit is an ideal place to create a best-in-class RTT chat app. Current urbit chat lacks a sense of immediacy and closeness, RTT fixes this. Urbit is currently mostly used on desktop machines instead of mobile, so typing speed and screen space aren't a problem. Urbit aesthetics are more web1, so an old ICQ-like interface would feel right at home on your ship. Finally, the peer-to-peer nature resolves some of the concerns about business models and server costs.
-
-TODO: some screenshots and links here
-
-TODO: link to project slides 
-[Project Slides Deck]()
 
 ## Installation (users)
 
@@ -63,7 +58,7 @@ To chat with your friend, both users must first install Squad and Realtime, then
 
 ## Limitations
 
-**NOTE**: This version is using Squads to coordinate chat room creation. The ideal version would work more like the existing chat app, letting you communicate with any urbit ship without first going through the Squad configuration. This is an artifact of my urbit app inexperience, the Squad codebase was smaller and more approachable than Chat for hacking. 
+**NOTE**: This version is using Squads to coordinate chat room creation. Ideally it should would work more like the existing chat app, letting you communicate with any urbit ship without first going through the Squad configuration. This is an artifact of my urbit app inexperience, the Squad codebase was smaller and more approachable than Chat for hacking. 
 
 Realtime only supports chat between two users. It's pretty straightforward to increase this number, but the more users the more crowded the screen becomes.
 
@@ -74,12 +69,6 @@ Realtime doesn't work on mobile. The input box behavior seems to be the cause.
 Realtime consists first of the gall agent defined in `realtime.hoon`. This is basically the same as the `%hut` gall agent, with an additional tag on each message: `ephemeral`. Messages marked `ephemeral` are used for the text that is currently being typed, before it is "committed" by pressing enter. 
 
 The second component is the React front-end defined in the `realtime-ui` directory. It lets you choose your squad, choose a chat room, and then send messages. The chat page polls your current input at a set interval (300-800ms), and sends updates with the `ephemeral` tag set to `"true"`. The chat display filters the messages to only display all the committed (non-ephemeral messages) with the most recent ephemeral message appended at the bottom. As new ephemeral messages come in, they replace the existing text. The result is real-time chat, where you can watch as the person types (albeit jerkily). 
-
-I should emphasize that the current implementation using hut and squads is merely an artifact of my Urbit app inexperience. 
-
-I am the first to acknowledge that this architecture is nearly brain-dead. We're not leveraging hoon code to give special treatment to the ephemeral chats, which really needn't be stored. It would be better to only store the committed messages and the most recent ephemeral message. 
-
-However, this is a result of working in the spirit of a hackathon: when I got in too deep to the hoon code and couldn't get it working quickly enough, I realized that I could just hack around it by leveraging my greater familiarity with the front-end code. My hope is that App School will help me build the skills to avoid this kind of hack and create a more suitable architecture for this app. 
 
 ## Future Work: Fluid Real Time Text
 
@@ -104,6 +93,6 @@ I believe it is relatively straightforward to adapt the techniques in XEP-0301 f
 - [ ] Clear button to clear all messages for one user
 - [ ] Customizable backgrounds and fonts for each user (more personality)
 
-## Useful Resources
+## Links
 
-[PyTEAL](https://pyteal.readthedocs.io/en/stable/index.html)
+[Project Slides Deck](https://docs.google.com/presentation/d/16Mh02aKftdPXX2NiXAo7vylEhDClc-crZQfWsdDGt7Y/edit?usp=sharing)
