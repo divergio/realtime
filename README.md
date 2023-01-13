@@ -42,7 +42,7 @@ To install using the UI, see the latest instructions at [urbit.org](https://urbi
 
 For developers, follow the instructions in the [Build a Chat App](https://developers.urbit.org/guides/quickstart/chat-guide#put-it-together) Lightning tutorial in the Urbit Developers documentations. 
 
-Realtime is a fork of `%hut`, simply perform the steps in the "Put it together" section, but substitute `%realtime` for `%hut`.
+Realtime is a fork of `%hut`, simply perform the steps in the "Put it together" section, but substitute `%realtime` for `%hut`. Also, be sure to replace the glob address in the docket with your own ship name. 
 
 For the front-end resources, follow the instructions in realtime-ui/README.md and then glob the `realtime-ui/dist` folder. 
 
