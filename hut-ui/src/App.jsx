@@ -52,7 +52,7 @@ class App extends Component {
 
   subscribe = () => {
     window.urbit.subscribe({
-      app: "hut",
+      app: "realtime",
       path: "/all",
       event: this.handleUpdate
     });
@@ -207,7 +207,7 @@ class App extends Component {
 
   doPoke = jon => {
     window.urbit.poke({
-      app: "hut",
+      app: "realtime",
       mark: "hut-do",
       json: jon,
     })

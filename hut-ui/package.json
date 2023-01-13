@@ -1,7 +1,7 @@
 {
-  "name": "hut",
-  "homepage": "/apps/hut/",
-  "version": "0.1.0",
+  "name": "realtime",
+  "homepage": "/apps/realtime/",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@urbit/foundation-design-system": "^0.3.1",

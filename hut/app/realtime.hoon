@@ -108,7 +108,7 @@
       ::
       ?.  =(our.bol host.gid.hut.act)
         :_  this
-        :~  (~(poke pass:io path) [host.gid.hut.act %hut] [mark vase])
+        :~  (~(poke pass:io path) [host.gid.hut.act %realtime] [mark vase])
         ==
       :: if it's our hut, we add the message to the hut
       ::
@@ -135,7 +135,7 @@
       =/  =path
         /(scot %p host.gid.act)/[name.gid.act]
       :_  this
-      :~  (~(watch pass:io path) [host.gid.act %hut] path)
+      :~  (~(watch pass:io path) [host.gid.act %realtime] path)
       ==
     ::
       :: unsubscribe from huts for a squad
@@ -161,7 +161,7 @@
       :-  :-  (fact:io hut-did+vase /all ~)
           ?:  =(our.bol host.gid.act)
             ~
-          ~[(~(leave-path pass:io path) [host.gid.act %hut] path)]
+          ~[(~(leave-path pass:io path) [host.gid.act %realtime] path)]
       %=  this
         huts     (~(del by huts) gid.act)
         msg-jar  msg-jar
@@ -519,7 +519,7 @@
     ::
       %kick
     :_  this
-    :~  (~(watch pass:io wire) [host.gid %hut] wire)
+    :~  (~(watch pass:io wire) [host.gid %realtime] wire)
     ==
   ::
     :: if it's an ordinary subscription update...
