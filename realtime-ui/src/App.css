@@ -66,16 +66,20 @@ main {
   display: block;
 }
 .content {
-  @apply border flex flex-col flex-1 border-wall-200 rounded-lg;
+  @apply flex flex-col flex-1;
   justify-content: stretch;
   overflow: hidden;
 }
 .msgs {
+  @apply border rounded-lg;
   height: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+}
+.msg-title {
+  @apply font-semibold text-wall-300;
 }
 .msg {
   margin: 0.4em 0.4em 0 16ch;
@@ -91,6 +95,7 @@ main {
 .what {
   overflow-wrap: break-word;
   text-overflow: ellipsis;
+  padding-left: 1ch;
 }
 .right-menu {
   height: 100%;
@@ -114,6 +119,7 @@ main {
 }
 input, textarea {
   @apply bg-white border border-wall-200;
+  padding-left: 1ch;
 }
 .our {
   width: 14ch;
@@ -128,7 +134,7 @@ input, textarea {
   display: flex;
   flex-direction: row;
   justify-content: stretch;
-  height: 6em;
+  height: 2em;
   margin: 1em 0;
 }
 textarea {

@@ -23,7 +23,6 @@ class ChatInput extends Component {
     return (
       (currentHut !== null) &&
         <div Class="input">
-          <strong Class="our">{this.props.patpShorten(our)}</strong>
           <textarea
             value={msg}
             onChange={e => this.props.setMsg(e.target.value)}

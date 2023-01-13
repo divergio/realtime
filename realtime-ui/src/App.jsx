@@ -303,15 +303,22 @@ class App extends Component {
     }
   };
 
+  chatLabel = patp => {
+    if (patp != null) {
+      return this.patpShorten(patp) + "'s window:";
+    }
+    return "";
+  }
   render() {
-    const {joined, currentGid} = this.state;
+    const {joined, currentGid, currentHut} = this.state;
     const ppl = (currentGid === null)
           ? []
           : (joined.has(currentGid))
           ? [...joined.get(currentGid)]
           : [];
-    // Currently just supports two people, find the first person who isn't you
+    // Currently only supports two people, find the first person who isn't you
     const other = ppl.find(person => person !== this.our)
+
     return (
       <React.Fragment>
         <ConnStatus conn={this.state.conn}/>
@@ -340,6 +347,8 @@ class App extends Component {
             makeHut={this.makeHut}
           />
           <div className="content">
+            {other != null && currentHut && 
+              <div className="msg-title">{this.chatLabel(other)}</div>}
             <Messages
               currentHut={this.state.currentHut}
               msgJar={this.state.msgJar}
@@ -347,6 +356,8 @@ class App extends Component {
               patpShorten={this.patpShorten}
               filterUser={other}
             />
+            {other != null && currentHut && 
+              <div className="msg-title">{this.chatLabel(this.our)}</div>}
             <Messages
               currentHut={this.state.currentHut}
               msgJar={this.state.msgJar}

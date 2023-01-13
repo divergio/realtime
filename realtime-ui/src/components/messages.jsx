@@ -15,9 +15,6 @@ class Messages extends Component {
         {
           msgsDisplay.map((msg, ind) =>
             <p className="msg" key={ind}>
-              <span className="who">
-                {patpShorten(msg.who) + '>'}
-              </span>
               <span className="what" lang="en">{msg.what}</span>
             </p>
           )
