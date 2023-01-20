@@ -15,7 +15,7 @@ Most of what people think of as chat is in the SMS style: one-by-one messages fr
 Real time chat (or realtime text, RTT), in contrast, lets you watch as someone composes a message. The result is an experience more like a conversation, with a more dynamic feel where the other person can interject or respond as the first person is composing their message. It's a fast and interactive way of conversing. 
 
 ## History
-In the early internet, real time chat was more common. It was the main chat type in the popular chat app [ICQ](https://en.wikipedia.org/wiki/ICQ), and its lineage even traces back to early [Unix utilities](https://en.wikipedia.org/wiki/Talk_(software).
+In the early internet, real time chat was more common. It was the main chat type in the popular chat app [ICQ](https://en.wikipedia.org/wiki/ICQ), and its lineage even traces back to early [Unix utilities](https://en.wikipedia.org/wiki/Talk_(software)).
 
 I've long had an affinity and nostalgia for this older form of chat, but it has fallen by the wayside as the SMS-style apps gained dominance. The form struggles on mobile, where slow typing speed frustrates communication. It's more suitable for desktop use, where typing speed and screen space are not limited. 
 
@@ -76,13 +76,13 @@ The second component is the React front-end defined in the `realtime-ui` directo
 
 The most critical problem with the current solution is that text updates still happen in chunks: a new piece of text arrives with each message, resulting in a "jerky" appearance to the chat. 
 
-When you heard about the polling interval, you might think that it's better to use a shorter interval or even get rid of the interval and send messages in response to keypresses. Unfortunately, not only could this result in spamming the network, neither solution actually resolves the jerkiness problem. 
+When you heard about the polling interval, you might think that it's better to use a shorter interval or even get rid of the interval and send messages in response to keypresses. Unfortunately, not only could this result in spamming the network, neither solution actually resolves the jerkiness problem with RTT over the internet. 
 
-Ultimately, jitter and latency in the network (which I suspect may be even worse on the urbit network, which sometimes has delayed messages) will result in some jerkiness or difference between how the person typed and how the text appears on the other persons screen. 
+Ultimately, jitter and latency in the network (which in my experience may be even worse on the urbit network, which sometimes has delayed messages) will result in some jerkiness or difference between how the person typed and how the text appears on the other persons screen. 
 
 So how would we achieve fluid real time text that preserves the emotions of the original typer over an unstable network? Fortunately, someone has already solved it with a brilliant but elegant solution: Mark Rejhon's (XEP-0301: In-Band Real Time Text)[https://xmpp.org/extensions/xep-0301.html].
 
-Briefly, what that specification describes is a technique for encoding the original time between key presses, transmitting them, and then reproducing them at the destination. It treats the text more like a video, using time stamps for each insertion and deletion, and sends a record of those key presses at regular intervals. The result is text appearing on screen that reproduces the look-and-feel of the typing of the sender, no matter the condition of the network separating the users. 
+Briefly, what that specification describes is a technique for encoding the original time between key presses and edits, transmitting them, and then reproducing them at the destination. It treats the text more like a video, using time stamps for each insertion and deletion, and sends a record of those key presses at regular intervals. The result is text appearing on screen that reproduces the look-and-feel of the typing of the sender, no matter the condition of the network separating the users. 
 
 I believe it is relatively straightforward to adapt the techniques in XEP-0301 for use in a Urbit chat app. 
 
