@@ -10,7 +10,7 @@ class ChatInput extends Component {
   sendEphemeral = () => this.props.postMsg("true");
 
   componentDidMount() {
-    // send ephemeral every 500ms
+    // send ephemeral every 800ms
     this.interval = setInterval(this.sendEphemeral, 800);
   }
 
