@@ -242,13 +242,11 @@ class App extends Component {
 
   postMsg = (ephemeral) => {
     const { msg, prevPost, currentHut } = this.state;
-    console.log("sending message" + ephemeral + msg);
     // a space is significant for holding a line,
     // showing that the previous ephemeral has been committed
     const message = msg.trim() === "" ? " " : msg;
     if (currentHut !== null && (ephemeral === "false" || message !== prevPost)) {
       const [host, gidName, hutName] = currentHut.split("/");
-      console.log("actually poking");
       this.doPoke(
         {
           "post": {
@@ -318,7 +316,7 @@ class App extends Component {
           : [];
     // Currently only supports two people, find the first person who isn't you
     const other = ppl.find(person => person !== this.our)
-
+    console.log({other,our: this.our,currentHut});
     return (
       <React.Fragment>
         <ConnStatus conn={this.state.conn}/>
